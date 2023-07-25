@@ -31,6 +31,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       _output = _buffer;
     }
   }
+  void _updateScreen(String str){
+    setState(() {
+      _output=str;
+    });
+  }
 
   void _calculate() {
     double num1 = _result;
@@ -83,6 +88,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       _calculate();
       _buffer = _output; // Update _buffer to hold the final result
       _output = _result.toString(); // Update _output to show the final result
+      _updateScreen(_output);
     }
   }
 
