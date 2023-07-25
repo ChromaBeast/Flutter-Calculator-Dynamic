@@ -122,7 +122,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   style: const TextStyle(
                       fontSize: 60.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white)),
+                      color: Color.fromARGB(255, 230, 223, 223))),
             ),
           ),
           const Divider(
@@ -136,7 +136,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               _buildBackspaceButton(),
             ],
           ),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -221,10 +220,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: _onClearPressed,
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
           shape: const CircleBorder(),
           minimumSize: const Size.fromRadius(50)),
-      child: const Text('Clear'),
+      child: const Icon(Icons.clear),
     );
   }
 
@@ -233,7 +232,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: _onBackspacePressed,
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.blue,
           shape: const CircleBorder(),
           minimumSize: const Size.fromRadius(50)),
       child: const Icon(Icons.backspace_rounded),
