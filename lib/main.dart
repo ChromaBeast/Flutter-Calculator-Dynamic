@@ -148,7 +148,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               _buildButton('7'),
               _buildButton('8'),
               _buildButton('9'),
-              _buildOperatorButton('÷'),
+              _buildOperatorButton('/'),
             ],
           ),
           Row(
@@ -157,7 +157,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               _buildButton('4'),
               _buildButton('5'),
               _buildButton('6'),
-              _buildOperatorButton('×'),
+              _buildOperatorButton('*'),
             ],
           ),
           Row(
