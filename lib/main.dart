@@ -1,20 +1,36 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(CalculatorApp());
+  runApp(const MyApp());
 }
 
-class CalculatorApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  static final _defaultLightColorScheme =
+  ColorScheme.fromSwatch(primarySwatch: Colors.blue);
+
+  static final _defaultDarkColorScheme = ColorScheme.fromSwatch(
+      primarySwatch: Colors.blue, brightness: Brightness.dark);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: CalculatorScreen(),
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.transparent
-      ),
-    );
+    return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
+      return MaterialApp(
+        title: 'Dynamic Color',
+        theme: ThemeData(
+          colorScheme: lightColorScheme ?? _defaultLightColorScheme,
+          useMaterial3: true,
+        ),
+        darkTheme: ThemeData(
+          colorScheme: darkColorScheme ?? _defaultDarkColorScheme,
+          useMaterial3: true,
+        ),
+        themeMode: ThemeMode.system,
+        home: CalculatorScreen(),
+      );
+    });
   }
 }
 
@@ -117,10 +133,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white24,
       appBar: AppBar(
         title: const Text('Calculator'),
-        backgroundColor: Colors.black,
+
       ),
       body: Column(
         children: [
@@ -132,12 +147,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   style: const TextStyle(
                       fontSize: 60.0,
                       fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 230, 223, 223))),
+                     )),
             ),
           ),
           const Divider(
             height: 0,
-            color: Colors.blue,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -193,7 +207,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: () => _onNumberPressed(value),
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 30),
-        backgroundColor: Colors.black,
         shape: const CircleBorder(),
         minimumSize: const Size.fromRadius(45),
       ),
@@ -206,7 +219,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: () => _onOperatorPressed(value),
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.blueGrey,
           shape: const CircleBorder(),
           minimumSize: const Size.fromRadius(45)),
       child: Text(value),
@@ -218,7 +230,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: _onEqualsPressed,
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.green,
           minimumSize: const Size.fromRadius(45),
           shape: const CircleBorder()),
       child: const Text('='),
@@ -230,7 +241,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: _onClearPressed,
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.blue,
           shape: const CircleBorder(),
           minimumSize: const Size.fromRadius(45)),
       child: const Icon(Icons.clear),
@@ -242,7 +252,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       onPressed: _onBackspacePressed,
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
-          backgroundColor: Colors.blue,
           shape: const CircleBorder(),
           minimumSize: const Size.fromRadius(45)),
       child: const Icon(Icons.backspace_rounded),
