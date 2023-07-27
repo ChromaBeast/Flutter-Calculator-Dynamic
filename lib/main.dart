@@ -10,6 +10,10 @@ class CalculatorApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: CalculatorScreen(),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.transparent
+      ),
     );
   }
 }
