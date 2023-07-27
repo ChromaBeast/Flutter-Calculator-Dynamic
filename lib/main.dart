@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           colorScheme: darkColorScheme ?? _defaultDarkColorScheme,
           useMaterial3: true,
         ),
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.system,
         home: CalculatorScreen(),
       );
     });
