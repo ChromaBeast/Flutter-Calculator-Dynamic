@@ -191,7 +191,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         textStyle: const TextStyle(fontSize: 30),
         backgroundColor: Colors.black,
         shape: const CircleBorder(),
-        minimumSize: const Size.fromRadius(50),
+        minimumSize: const Size.fromRadius(45),
       ),
       child: Text(value),
     );
@@ -204,7 +204,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           textStyle: const TextStyle(fontSize: 30),
           backgroundColor: Colors.blueGrey,
           shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(50)),
+          minimumSize: const Size.fromRadius(45)),
       child: Text(value),
     );
   }
@@ -215,7 +215,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       style: ElevatedButton.styleFrom(
           textStyle: const TextStyle(fontSize: 30),
           backgroundColor: Colors.green,
-          minimumSize: const Size.fromRadius(50),
+          minimumSize: const Size.fromRadius(45),
           shape: const CircleBorder()),
       child: const Text('='),
     );
@@ -228,7 +228,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           textStyle: const TextStyle(fontSize: 30),
           backgroundColor: Colors.blue,
           shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(50)),
+          minimumSize: const Size.fromRadius(45)),
       child: const Icon(Icons.clear),
     );
   }
@@ -240,7 +240,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           textStyle: const TextStyle(fontSize: 30),
           backgroundColor: Colors.blue,
           shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(50)),
+          minimumSize: const Size.fromRadius(45)),
       child: const Icon(Icons.backspace_rounded),
     );
   }
