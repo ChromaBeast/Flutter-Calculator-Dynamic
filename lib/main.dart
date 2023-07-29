@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   static final _defaultLightColorScheme =
-  ColorScheme.fromSwatch(primarySwatch: Colors.blue);
+      ColorScheme.fromSwatch(primarySwatch: Colors.blue);
 
   static final _defaultDarkColorScheme = ColorScheme.fromSwatch(
       primarySwatch: Colors.blue, brightness: Brightness.dark);
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return DynamicColorBuilder(builder: (lightColorScheme, darkColorScheme) {
       return MaterialApp(
-        title: 'Dynamic Color',
+        title: 'Calculator',
         theme: ThemeData(
           colorScheme: lightColorScheme ?? _defaultLightColorScheme,
           useMaterial3: true,
@@ -51,9 +51,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       _output = _buffer;
     }
   }
-  void _updateScreen(String str){
+
+  void _updateScreen(String str) {
     setState(() {
-      _output=str;
+      _output = str;
     });
   }
 
@@ -135,7 +136,6 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculator'),
-
       ),
       body: Column(
         children: [
@@ -145,9 +145,9 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               alignment: Alignment.topRight,
               child: Text(_output,
                   style: const TextStyle(
-                      fontSize: 60.0,
-                      fontWeight: FontWeight.bold,
-                     )),
+                    fontSize: 60.0,
+                    fontWeight: FontWeight.bold,
+                  )),
             ),
           ),
           const Divider(
@@ -209,6 +209,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         textStyle: const TextStyle(fontSize: 30),
         shape: const CircleBorder(),
         minimumSize: const Size.fromRadius(45),
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       ),
       child: Text(value),
     );
@@ -218,9 +219,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return ElevatedButton(
       onPressed: () => _onOperatorPressed(value),
       style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 30),
-          shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(45)),
+        textStyle: const TextStyle(fontSize: 30),
+        shape: const CircleBorder(),
+        minimumSize: const Size.fromRadius(45),
+        backgroundColor: Theme.of(context).colorScheme.tertiaryContainer,
+      ),
       child: Text(value),
     );
   }
@@ -229,21 +232,27 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return ElevatedButton(
       onPressed: _onEqualsPressed,
       style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 30),
-          minimumSize: const Size.fromRadius(45),
-          shape: const CircleBorder()),
+        textStyle: const TextStyle(fontSize: 30),
+        minimumSize: const Size.fromRadius(45),
+        shape: const CircleBorder(),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
       child: const Text('='),
     );
   }
 
   Widget _buildClearButton() {
-    return ElevatedButton(
-      onPressed: _onClearPressed,
-      style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 30),
-          shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(45)),
-      child: const Icon(Icons.clear),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: _onClearPressed,
+        style: ElevatedButton.styleFrom(
+            textStyle: const TextStyle(fontSize: 30),
+            backgroundColor: Theme.of(context).colorScheme.errorContainer,
+            shape: const CircleBorder(),
+            minimumSize: const Size.fromRadius(45)),
+        child: const Icon(Icons.clear),
+      ),
     );
   }
 
@@ -251,9 +260,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return ElevatedButton(
       onPressed: _onBackspacePressed,
       style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(fontSize: 30),
-          shape: const CircleBorder(),
-          minimumSize: const Size.fromRadius(45)),
+        textStyle: const TextStyle(fontSize: 30),
+        shape: const CircleBorder(),
+        minimumSize: const Size.fromRadius(45),
+        backgroundColor: Theme.of(context).colorScheme.errorContainer,
+      ),
       child: const Icon(Icons.backspace_rounded),
     );
   }
