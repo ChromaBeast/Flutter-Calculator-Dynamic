@@ -77,7 +77,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         break;
     }
 
-    _output = _result.toStringAsFixed(3);
+    _output = _result.toStringAsFixed(2);
     _buffer = '';
     _operator = '';
   }
@@ -108,7 +108,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     if (_buffer.isNotEmpty && _operator.isNotEmpty) {
       _calculate();
       _buffer = _output; // Update _buffer to hold the final result
-      _output = _result.toStringAsFixed(3); // Update _output to show the final result
+      _output = _result.toStringAsFixed(2); // Update _output to show the final result
       _updateScreen(_output);
     }
   }
