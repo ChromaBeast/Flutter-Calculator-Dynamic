@@ -77,7 +77,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         break;
     }
 
-    _output = _result.toString();
+    _output = _result.toStringAsFixed(3);
     _buffer = '';
     _operator = '';
   }
@@ -108,7 +108,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     if (_buffer.isNotEmpty && _operator.isNotEmpty) {
       _calculate();
       _buffer = _output; // Update _buffer to hold the final result
-      _output = _result.toString(); // Update _output to show the final result
+      _output = _result.toStringAsFixed(3); // Update _output to show the final result
       _updateScreen(_output);
     }
   }
@@ -143,6 +143,17 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             child: Container(
               padding: const EdgeInsets.all(16.0),
               alignment: Alignment.topRight,
+              child: Text('$_result $_operator',
+                  style: const TextStyle(
+                    fontSize: 50.0,
+                    fontWeight: FontWeight.bold,
+                  )),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.topRight,
               child: Text(_output,
                   style: const TextStyle(
                     fontSize: 60.0,
@@ -154,7 +165,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             height: 0,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
+
             children: [
               _buildClearButton(),
               _buildBackspaceButton(),
